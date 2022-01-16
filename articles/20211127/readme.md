@@ -41,7 +41,8 @@ async function exportExcel() {
 ![bug.100条.性能剖析](./img/bug.100条.性能剖析.png)
 ![bug.100条.占用](./img/bug.100条.占用.png)
 
-确定嫌疑代码：  
+确定嫌疑代码：
+
 ![旧循环](./img/旧循环.png)
 
 把`layui.data`的调用移到最外面试试：
