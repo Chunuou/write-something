@@ -41,12 +41,13 @@ async function exportExcel() {
 ![bug.100条.性能剖析](./img/bug.100条.性能剖析.png)
 ![bug.100条.占用](./img/bug.100条.占用.png)
 
-确定嫌疑代码：![旧循环](./img/旧循环.png)
+确定嫌疑代码：  
+![旧循环](./img/旧循环.png)
 
 把`layui.data`的调用移到最外面试试：
 ![新循环.1](./img/新循环.1.png)
 ![新循环.1.性能](./img/新循环.1.性能.png)
-![新循环.1.占用](./img/新循环.1.占用.png)
+![新循环.1.占用](./img/新循环.1.占用.png)  
 依然存在问题。
 
 弃用`layui.data`改用原生`lcoalStorage`：
@@ -60,7 +61,7 @@ async function exportExcel() {
 
 把`localStorage`的调用移动到页面里，同时在页面里复制一个专用的`getNameByID`方法，模拟导出4000条，占用：
 ![最终占用](./img/最终占用.png)
-耗时：
+耗时：  
 ![最终耗时](./img/最终耗时.png)
 
 一番测试下来，最终版本的极限在28000条，数量再大就会报 *STATUS_BREAKPOINT* 错误。
