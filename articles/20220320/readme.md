@@ -16,3 +16,18 @@
    fnm env --use-on-cd | Out-String | Invoke-Expression
    ```
 
+## 与 husky 配合使用
+
+需要添加 `.huskyrc` 以便 husky 能够使用 fnm 管理的 node。
+
+C:\Users\\{user}\\.huskyrc
+
+```bash
+eval "$(fnm env --use-on-cd)"
+
+export PATH=$(cygpath $FNM_MULTISHELL_PATH):$PATH
+
+if [[ -f .node-version || -f .nvmrc ]]; then
+   fnm use
+fi
+```
